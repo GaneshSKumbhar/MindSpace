@@ -1,0 +1,132 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fa; /* Light background for a clean look */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: #007bff; /* Primary Color */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #0056b3; /* Darker shade of primary color */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Main Content Styles */
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+h2 {
+    color: #007bff; /* Primary Color */
+}
+
+/* Button Styles */
+.btn {
+    background-color: #28a745; /* Green for positive actions */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Form Styles */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form input[type="submit"] {
+    width: auto; /* Adjust width for submit button */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #007bff; /* Primary Color */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Icon Styles */
+.icon {
+    width: 24px; /* Set icon size */
+    height: auto; 
+}
+
+
+/* Background Image Example for Sections */
+.section-background {
+   background-image: url('main_background.avif'); /* Replace with your image path */
+   background-size: cover; 
+   background-position: center; 
+   padding: 50px; 
+   border-radius: 8px; 
+   color:white; /* Text color on image background */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block; /* Stack navigation items on smaller screens */
+        margin-bottom: 10px;
+        text-align: center; /* Center align on smaller screens */
+    }
+
+    .container {
+        width: 95%;
+        padding-left: 10px; /* Add some padding on smaller screens */
+        padding-right: 10px; /* Add some padding on smaller screens */
+    }
+}

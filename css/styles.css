@@ -1,0 +1,61 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+    color: #333; /* Dark text color */
+}
+
+.container {
+    max-width: 600px; /* Limit container width */
+    margin-top: 100px; /* Top margin for spacing */
+}
+
+.card {
+    border-radius: 15px; /* Rounded corners for the card */
+    border: none; /* Remove border */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.card-body {
+    padding: 30px; /* Padding inside the card */
+    background-color: white; /* White background for card */
+    border-radius: 15px; /* Rounded corners for card body */
+}
+
+h2 {
+    color: #6a11cb; /* Heading color matching gradient */
+}
+
+.alert {
+    margin-bottom: 20px; /* Spacing below alert messages */
+}
+
+.btn-primary {
+    background-color: #2575fc; /* Primary button color */
+    border-color: #2575fc; /* Border color matching button */
+    border-radius: 25px; /* Rounded button corners */
+}
+
+.btn-primary:hover {
+    background-color: #1e6bb8; /* Darker shade on hover */
+    border-color: #1a5f9e; /* Darker border on hover */
+}
+
+.form-group label {
+    font-weight: bold; /* Bold labels for better readability */
+}
+
+/* Input fields styling */
+input.form-control {
+    border-radius: 25px; /* Rounded input corners */
+}
+
+input.form-control:focus {
+    box-shadow: 0 0 5px rgba(38, 117, 252, 0.5); /* Focus shadow effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+   .container {
+       padding: 15px; /* Adjust padding for smaller screens */
+   }
+}
