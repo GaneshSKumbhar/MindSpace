@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="../css/styles.css"> <!-- Link to your CSS file -->
     <title>Create New Account</title>
 </head>
 <body class="bg-light">
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
 
                 <!-- Register Button -->
-                <input type="submit" name="register" class="btn btn-primary w-100 mb-3" value="Register">
+                <input type="submit" name="register" class="btn btn-primary w-40 mb-3" value="Register">
 
                 <!-- Link back to login -->
                 <p class="text-center">Already have an account? <a href="login.php" onclick='window.location.href = "login.php";'>Login here</a>.</p>
