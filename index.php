@@ -1,3 +1,5 @@
+<?php include './template/header.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -162,22 +164,6 @@
 </head>
 <body>
     <div class="container-fluid"></div>
-    <header>
-        <div class="logo">
-            <img src="logo-transparent-png.png" alt="Be Mindful Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">The Program</a></li>
-                <li><a href="#">The Benefits</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <div class="login"><a href="login_system/login.php">Login</a>
-                </div>
-            </ul>
-        </nav>
-    </header>
-
     <section id="main">
         <div class="container">
             <article id="main-col">
@@ -221,53 +207,6 @@
             </article>
         </div>
     </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-sections">
-                <div class="footer-section">
-                    <h3>Program</h3>
-                    <ul>
-                        <li><a href="#">Frequently Asked Questions</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">For Healthcare</a></li>
-                        <li><a href="#">For Workplace</a></li>
-                        <li><a href="#">Test Your Stress</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">Wellmind Health</a></li>
-                        <li><a href="#">Regulatory Standards</a></li>
-                        <li><a href="#">Latest Research</a></li>
-                        <li><a href="#">About Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">Terms and Conditions</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Accessibility Statement</a></li>
-                        <li><a href="#">Security Best Practices</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section subscribe">
-                    <h3>Subscribe</h3>
-                    <p>Enter your email to receive the latest news and insights from Wellmind Health</p>
-                    <form>
-                        <input type="email" placeholder="Your email">
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>All rights reserved. © 2025 Wellmind Health. Be Mindful is owned and operated by Wellmind Health Ltd. A company registered in England & Wales | v4.3.6.7.4.0.4.3.1</p>
-            </div>
-        </div>
-    </footer>
     <script>
         const meterHandle = document.getElementById('meter-handle');
         const meterValueDisplay = document.getElementById('meter-value');
@@ -307,3 +246,4 @@
     </script>
 </body>
 </html>
+<?php include './template/footer.php'; ?>
