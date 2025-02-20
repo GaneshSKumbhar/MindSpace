@@ -1,6 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right,rgb(51, 109, 235), #65ccf5); /* Gradient background */
+    background: linear-gradient(to left,#e0f7fa, #4dd0e1); /* Gradient background */
     color: #333; /* Dark text color */
 }
 
@@ -22,7 +22,7 @@ body {
 }
 
 h2 {
-    color: rgb(51, 109, 235); /* Heading color matching gradient */
+    color: #26c6da; /* Heading color matching gradient */
 }
 
 .alert {
@@ -30,8 +30,8 @@ h2 {
 }
 
 .btn-primary {
-    background-color: #2575fc; /* Primary button color */
-    border-color: #2575fc; /* Border color matching button */
+    background-color: #26c6da; /* Primary button color */
+    border-color: #26c6da; /* Border color matching button */
     border-radius: 25px; /* Rounded button corners */
 }
 
