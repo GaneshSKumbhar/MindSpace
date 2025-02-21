@@ -347,3 +347,60 @@ section .top{
   font-size: 0.8em; /* Reduced font size */
   text-transform: uppercase;
 }
+
+.doctors-page {
+  background: linear-gradient(to left, #ade9f0, #068191);
+}
+
+.doctor-card {
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+}
+
+.doctor-card .card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  color: #457b9d;
+}
+
+.doctor-card .card-text {
+  font-size: 1rem;
+  color: #495057;
+}
+
+.doctors-container {
+  margin-top: 20px;
+}
+
+/* Section and container styles */
+section .container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+section .top{
+  text-align: center;
+  padding: 30px 250px;
+  margin-top: 100px;
+}
+
+.top h1{
+  padding: 15px 0px;
+  font-size: 30px;
+  color: #c7d7e7;
+}
+.top p{
+  font-size: 25px;
+  color: #c7d7e7;
+}
+#main {
+  padding: 20px;
+}
