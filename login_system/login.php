@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php'; // Include database connection file
+require_once '../dbconnect/config.php'; // Include database connection file
 session_start();
 
 // Check if user is already logged in
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             // Redirect based on user role
             if ($role === 'doctor') {
-                header("Location: doctor_dashboard.php");
+                header("Location: ../doctor/doctor_dashboard.php");
             } elseif ($role === 'admin') {
                 header("Location: admin_dashboard.php");
             } else {
