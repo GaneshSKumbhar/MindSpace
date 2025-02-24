@@ -13,7 +13,7 @@
         <div class="container-fluid"></div>
         <header>
             <div class="logo">
-                <img src="./images/logo-transparent-png.png" alt="Be Mindful Logo">
+                <img src="../logo-transparent-png.png" alt="Be Mindful Logo">
             </div>
             <nav>
                 <ul>
@@ -21,7 +21,7 @@
                     <li><a href="#">The Benefits</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
-                    <div class="login"><a href="login_system/login.php">Login</a>
+                    <div class="login"><a href="../login_system/login.php">Login</a>
                     </div>
                 </ul>
             </nav>

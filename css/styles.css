@@ -38,7 +38,7 @@ h2 {
     display: flex !important;
     justify-content: center; /* Centers horizontally */
     align-items: center;
-    font-size: 22px;
+    font-size:22px;
 }
 
 .btn-primary:hover {

@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php'; // Include database connection file
+require_once '../dbconnect/config.php'; // Include database connection file
 
 $message = "";
 
