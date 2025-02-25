@@ -10,6 +10,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($_POST['password']);
     $confirm_password = trim($_POST['confirm_password']);
     $role = trim($_POST['role']); // New role field
+    $phone_number = trim($_POST['phone_number']); // New phone number field
+
+    // Doctor-specific fields
+    $profile_photo = isset($_FILES['profile_photo']) ? $_FILES['profile_photo'] : null;
+    $specialization = trim($_POST['specialization'] ?? '');
+    $clinic_address = trim($_POST['clinic_address'] ?? '');
 
     // Validate input
     if ($password !== $confirm_password) {
@@ -18,16 +24,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Hash the password
         $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-        // Prepare SQL statement to insert user data
-        $stmt = $conn->prepare("INSERT INTO user (username, email, password, role) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $username, $email, $password_hash, $role);
+        // Start a transaction to ensure both inserts succeed or fail together
+        $conn->begin_transaction();
 
-        if ($stmt->execute()) {
-            $message = "Registration successful! You can now log in.";
-        } else {
-            $message = "Error: " . $stmt->error;
+        try {
+            // Prepare SQL statement to insert user data into the 'user' table
+            $stmt = $conn->prepare("INSERT INTO user (username, email, password, role, phone_number) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssss", $username, $email, $password_hash, $role, $phone_number);
+
+            if ($stmt->execute()) {
+                // Get the user ID of the newly inserted user
+                $user_id = $conn->insert_id;
+
+                // If the user is a doctor, insert their info into the 'doctor' table
+                if ($role === 'doctor') {
+                    // Handle profile photo upload
+                    $profile_photo_path = '';  // Initialize path
+                    if ($profile_photo && $profile_photo['size'] > 0) {
+                        $uploadDir = '../uploads/';  // Directory to store uploads
+                        $fileName = basename($profile_photo['name']);
+                        $filePath = $uploadDir . $fileName;
+
+                        if (move_uploaded_file($profile_photo['tmp_name'], $filePath)) {
+                            $profile_photo_path = $filePath;  // Save the path to the database
+                        } else {
+                            throw new Exception("Failed to upload profile photo.");
+                        }
+                    }
+
+                    $doctor_stmt = $conn->prepare("INSERT INTO doctor (username, password, email, role, phone_number, specialization, clinic_address, profile_photo_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                    $doctor_stmt->bind_param("ssssssss", $username, $password_hash, $email, $role, $phone_number, $specialization, $clinic_address, $profile_photo_path); // Use hashed password
+
+                    if ($doctor_stmt->execute()) {
+                        // Doctor information saved successfully
+                    } else {
+                        throw new Exception("Error creating doctor account: " . $doctor_stmt->error);
+                    }
+                    $doctor_stmt->close();
+                }
+
+                // Commit the transaction
+                $conn->commit();
+                $message = "Registration successful! You can now log in.";
+
+            } else {
+                throw new Exception("Error creating user account: " . $stmt->error);
+            }
+            $stmt->close();
+
+        } catch (Exception $e) {
+            // Rollback the transaction if any error occurred
+            $conn->rollback();
+            $message = "Registration failed: " . $e->getMessage(); // Display specific error
         }
-        $stmt->close();
     }
 }
 ?>
@@ -53,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php endif; ?>
 
             <!-- Registration Form -->
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group mb-3">
                     <label>Username</label>
                     <input type="text" name="username" class="form-control" required>
@@ -61,6 +110,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group mb-3">
                     <label>Email</label>
                     <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="text" class="form-control" id="phone_number" name="phone_number">
                 </div>
                 <div class="form-group mb-3">
                     <label>Password</label>
@@ -82,13 +135,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </select>
                 </div>
 
+                <!-- Doctor-specific fields (initially hidden) -->
+                <div id="doctorFields" style="display: none;">
+                    <div class="form-group mb-3">
+                        <label for="profile_photo">Profile Photo</label>
+                        <input type="file" class="form-control" id="profile_photo" name="profile_photo">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="specialization">Specialization</label>
+                        <input type="text" class="form-control" id="specialization" name="specialization">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="clinic_address">Clinic Address</label>
+                        <textarea class="form-control" id="clinic_address" name="clinic_address"></textarea>
+                    </div>
+                </div>
+
                 <!-- Register Button -->
                 <input type="submit" name="register" class="btn btn-primary w-40 mb-3" value="Register">
 
                 <!-- Link back to login -->
                 <p class="text-center">Already have an account? <a href="login.php" onclick='window.location.href = "login.php";'>Login here</a>.</p>
 
-                
             </form>
 
         </div>
@@ -98,6 +166,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="//stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
+<script>
+    $(document).ready(function() {
+        $('#role').change(function() {
+            if ($(this).val() === 'doctor') {
+                $('#doctorFields').show();
+            } else {
+                $('#doctorFields').hide();
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
-

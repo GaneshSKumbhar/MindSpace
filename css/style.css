@@ -27,6 +27,7 @@ header {
   height: 80px;
   position: fixed;
   z-index: 5;
+  padding-right: 20px;
   color: #333;
 }
 
@@ -61,6 +62,9 @@ nav ul li a {
 
 nav ul li:hover {
   color: #02629af9;
+}
+ul{
+  margin: 0px;
 }
 
 .login a{
@@ -377,6 +381,10 @@ section .top{
 
 .doctors-container {
   margin-top: 20px;
+}
+
+.card-img-top{
+height: 300px;
 }
 
 /* Section and container styles */
